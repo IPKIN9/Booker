@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('auth/login/Login');
+// });
+Route::prefix('auth')->group(function() {
+    Route::get('/','ManualAuth\AuthController@index')->name('LoginView');
+    Route::post('check','ManualAuth\AuthController@authenticate')->name('authcheck');
 });
