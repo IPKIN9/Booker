@@ -19,4 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('auth')->group(function() {
     Route::get('/','ManualAuth\AuthController@index')->name('LoginView');
     Route::post('check','ManualAuth\AuthController@authenticate')->name('authcheck');
+    Route::get('registview','ManualAuth\AuthController@regist')->name('RegistView');
+    Route::post('regist','ManualAuth\AuthController@create')->name('authregist');
 });
