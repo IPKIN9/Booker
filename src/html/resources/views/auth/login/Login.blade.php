@@ -2,6 +2,11 @@
 @section('content')
     <form action="{{ route('authcheck') }}" method="post">
         @csrf
+            @if (session('status'))
+                <div class="text-danger">
+                  {{ session('status') }}
+                </div>
+            @endif
         <div>
             {{-- <div class="form-group">
                 <label for="username">name</label>
@@ -13,6 +18,7 @@
                     </span>
                 @enderror
             </div> --}}
+            
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
