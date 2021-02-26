@@ -24,7 +24,7 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        $name = DB::table('users')->where('username', $request->email)->value('name');
+        $name = DB::table('users')->where('username', $request->username)->value('name');
 
         if (Auth::attempt($credentials)) {
             $request->session()->put('login', $name);
