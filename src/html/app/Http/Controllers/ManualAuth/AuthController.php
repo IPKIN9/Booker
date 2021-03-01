@@ -13,6 +13,10 @@ class AuthController extends Controller
 {
     public function index()
     {
+        if (Auth::check())
+        {
+            return view('cms.dashboard.DsMaster');
+        }
         return view('cms.auth.Login');
     }
 
@@ -28,8 +32,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->put('login', $name);
-            echo "success";
-            // return redirect(route('dashboard'));
+            return redirect(route('dashboard'));
         } else {
             return redirect(route('LoginView'))->withInput()->with('status', 'Username atau Password salah');
         }
@@ -57,5 +60,11 @@ class AuthController extends Controller
         ]);
         DB::table('users')->insert($data);
         return redirect(route('LoginView'))->with('status','Input Success');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->forget('login');
+        return redirect(route('LoginView'));
     }
 }

@@ -9,14 +9,14 @@
                             <span class="login100-form-title p-b-33">
                                 Copac Login
                             </span>
-                            <br>
-                            <span>
+                            <span style="text-align: center;">
                                 @if (session('status'))
                                     <div class="text-danger">
                                         {{ session('status') }}
                                     </div>
                                 @endif
                             </span>
+                            <br>
                             <div class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
                                 <input class="input100" type="text" name="username" placeholder="Username" required>
                                 <span class="focus-input100-1"></span>
