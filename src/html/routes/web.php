@@ -13,12 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('cms/dashboard/DsMaster');
-});
+// Route::get('/', function () {
+//     return view('cms/dashboard/DsMaster');
+// });
 Route::get('cms','ManualAuth\AuthController@index')->name('LoginView');
 Route::prefix('auth')->group(function() {
     Route::post('check','ManualAuth\AuthController@authenticate')->name('authcheck');
+    Route::get('logout','ManualAuth\AuthController@logout')->name('logout');
     Route::get('registview','ManualAuth\AuthController@regist')->name('RegistView');
     Route::post('regist','ManualAuth\AuthController@create')->name('authregist');
+    Route::get('Ds','ManualAuth\DsController@index')->name('dashboard');
 });

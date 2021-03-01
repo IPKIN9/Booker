@@ -1,4 +1,4 @@
-@extends('cms.layouts.auth.TempLogin')
+@extends('layouts.cms.auth.TempLogin')
 @section('content')
 <form action="{{ route('authregist') }}" method="post">
     @csrf
