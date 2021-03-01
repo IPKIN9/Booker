@@ -13,7 +13,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('auth.login.Login');
+        return view('cms.auth.Login');
     }
 
     public function authenticate(Request $request)
@@ -31,13 +31,13 @@ class AuthController extends Controller
             echo "success";
             // return redirect(route('dashboard'));
         } else {
-            return redirect(route('LoginView'))->withInput()->with('status', 'Email atau Password salah');
+            return redirect(route('LoginView'))->withInput()->with('status', 'Username atau Password salah');
         }
     }
 
     public function regist()
     {
-        return view('auth.register.Register');
+        return view('cms.auth.Register');
     }
 
     public function create(Request $request)
