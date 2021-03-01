@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('auth/login/Login');
-// });
-Route::get('/','ManualAuth\AuthController@index')->name('LoginView');
+Route::get('/', function () {
+    return view('cms/dashboard/DsMaster');
+});
+Route::get('cms','ManualAuth\AuthController@index')->name('LoginView');
 Route::prefix('auth')->group(function() {
     Route::post('check','ManualAuth\AuthController@authenticate')->name('authcheck');
     Route::get('registview','ManualAuth\AuthController@regist')->name('RegistView');
