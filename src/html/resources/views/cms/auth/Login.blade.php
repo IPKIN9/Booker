@@ -15,6 +15,10 @@
                                         {{ session('status') }}
                                     </div>
                                 @endif
+
+                                @if($errors->any())
+                                    <div class="text-danger">{{$errors->first()}}</div>
+                                @endif
                             </span>
                             <br>
                             <div class="wrap-input100 validate-input" data-validate = "Valid username is required: ex@abc.xyz">
@@ -22,24 +26,12 @@
                                 <span class="focus-input100-1"></span>
                                 <span class="focus-input100-2"></span>
                             </div>
-
-                            @error('username')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
         
                             <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
                                 <input class="input100" type="password" name="password" placeholder="Password" required>
                                 <span class="focus-input100-1"></span>
                                 <span class="focus-input100-2"></span>
                             </div>
-
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
         
                             <div class="container-login100-form-btn m-t-20">
                                 <button class="login100-form-btn" type="submit">

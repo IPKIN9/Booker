@@ -22,19 +22,17 @@ class AuthController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->only('username', 'password');
         $request->validate([
             'username' => 'required|string|string|max:255',
             'password' => 'required|min:6',
         ]);
-
+        $credentials = $request->only('username', 'password');
         $name = DB::table('users')->where('username', $request->username)->value('name');
-
         if (Auth::attempt($credentials)) {
             $request->session()->put('login', $name);
             return redirect(route('dashboard'));
         } else {
-            return redirect(route('LoginView'))->withInput()->with('status', 'Username atau Password salah');
+            return redirect(route('LoginView'))->with('status', 'Username or Password Wrong');
         }
     }
 
